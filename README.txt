@@ -1,3 +1,25 @@
+For Jacob
+this repo includes every code u need except for the entire input folder since it's too big
+
+the result in Mac system is:
+Energy Delay product (EDP) = 0.658114374 J.s
+Energy Delay product (EDP) = 0.257216901 J.s
+Average EDP: 0.457665637
+
+the result in Seasnet / Linux is:
+Extracted EDP values:
+Energy Delay product (EDP) = 0.543820322 J.s
+Energy Delay product (EDP) = 0.241894260 J.s
+Average EDP: 0.392857291
+
+I make some modification to params.h, memory_controller.h, and main.c to avoid the multiple definition error in linux
+
+for scheduler.c:
+1. TCM Lite 
+2. Age + Row-hit hybrid）
+3. Increase to HI_WM 80 & LO_WM 40 
+are applied to decrease EDP
+
 
 ------------------------------------------------------------------------------
 USIMM: the Utah SImulated Memory Module
