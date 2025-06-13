@@ -1,0 +1,25 @@
+#!/bin/bash
+
+echo "Running comm1 + comm2..."
+bin/usimm input/1channel.cfg input/comm1 input/comm2 > output/c1-c2-1 
+echo "Done. Output: output/c1-c2-1"
+
+echo "Running black + freq..."
+bin/usimm input/1channel.cfg input/black input/freq > output/bl-fr-1 
+echo "Done. Output: output/bl-fr-1"
+
+# show the output files
+echo ""
+echo "Extracted EDP values:"
+grep "EDP" output/c1-c2-1
+grep "EDP" output/bl-fr-1
+
+# calculate average EDP
+echo ""
+edp1=$(grep "EDP" output/c1-c2-1 | grep -oE "[0-9]+\.[0-9]+")
+edp2=$(grep "EDP" output/bl-fr-1 | grep -oE "[0-9]+\.[0-9]+")
+average=$(echo "scale=9; ($edp1 + $edp2) / 2" | bc)
+
+average=$(echo "scale=9; ($edp1 + $edp2) / 2" | bc)
+
+echo "Average EDP: $average"
